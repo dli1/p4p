@@ -1,0 +1,33 @@
+CONFIG_NAME: 'atten/web_famous'
+
+DATASET_NAME: 'atten_web_famous'
+DATA_DIR: '../data/Paint4Poem-Web-famous-subset/famous_poem'
+GPU_ID: 0
+WORKERS: 1
+
+B_VALIDATION: True  # True  # False
+TREE:
+    BRANCH_NUM: 3
+
+
+TRAIN:
+    TRAINER: 'condGANTrainer'
+    FLAG: False
+    NET_G: '../output/attn/web_famous/netG_epoch_100.pth'
+    B_NET_D: False
+    BATCH_SIZE: 100
+    NET_E: '../output/DAMSM/web_famous_DAMSM_2021_01_22_10_50_17/Model/text_encoder190.pth'
+
+CNN_RNN:
+    HIDDEN_DIM: 256
+
+GAN:
+    DF_DIM: 64
+    GF_DIM: 32
+    Z_DIM: 100
+    R_NUM: 2
+
+TEXT:
+    EMBEDDING_DIM: 256
+    CAPTIONS_PER_IMAGE: 1
+    WORDS_NUM: 18

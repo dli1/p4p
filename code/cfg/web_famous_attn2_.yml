@@ -1,0 +1,47 @@
+CONFIG_NAME: 'attn2'
+
+DATASET_NAME: 'web_famous'
+DATA_DIR: '../data/Paint4Poem-Web-famous-subset/famous_poem'
+GPU_ID: 0
+WORKERS: 1
+
+
+TREE:
+    BRANCH_NUM: 3
+
+
+TRAIN:
+    FLAG: True
+    NET_G: ''  # '../models/bird_AttnGAN2.pth'
+    B_NET_D: True
+    BATCH_SIZE: 22  # 22
+    MAX_EPOCH: 101
+    SNAPSHOT_INTERVAL: 20
+    DISCRIMINATOR_LR: 0.0002
+    GENERATOR_LR: 0.0002
+    #
+    NET_E: '../output/DAMSM/web_famous_DAMSM_2021_01_22_10_50_17/Model/text_encoder190.pth'
+    SMOOTH:
+        GAMMA1: 4.0  # 1,2,5 good 4 best  10&100bad
+        GAMMA2: 5.0
+        GAMMA3: 10.0  # 10good 1&100bad
+        LAMBDA: 0.5
+
+
+GAN:
+    DF_DIM: 64
+    GF_DIM: 32
+    Z_DIM: 100
+    R_NUM: 2
+
+
+LOSS:
+    D_w: 4
+    G_w: 4
+    D_runtime: 1
+    G_runtime: 2
+    show_gen: 20
+
+TEXT:
+    EMBEDDING_DIM: 256
+    CAPTIONS_PER_IMAGE: 1
